@@ -7,9 +7,10 @@ export const addTodo = (id, data) => {
     },
   };
 };
-export const deleteTodo = () => {
+export const deleteTodo = (data) => {
   return {
     type: "DELETE_TODO",
+    payload: data,
   };
 };
 export const toggleComplete = (data) => {

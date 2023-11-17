@@ -16,13 +16,20 @@ const todoReducers = (state = initialData, action) => {
         ],
       };
     case "TOGGLE_COMPLETE":
-      const dataId = action.payload;
+      const statusId = action.payload;
       const newTodos = state.list.map((todo) =>
-        todo.id === dataId ? { ...todo, completed: !todo.completed } : todo
+        todo.id === statusId ? { ...todo, completed: !todo.completed } : todo
       );
       return {
         ...state,
         list: newTodos,
+      };
+    case "DELETE_TODO":
+      const deleteId = action.payload;
+      const filteredTodos = state.list.filter((todo) => todo.id !== deleteId);
+      return {
+        ...state,
+        list: filteredTodos,
       };
 
     default:
