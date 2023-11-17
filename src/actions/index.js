@@ -19,8 +19,19 @@ export const toggleComplete = (data) => {
     payload: data,
   };
 };
-export const editTodo = () => {
+export const editTodo = (id, data) => {
   return {
     type: "EDIT_TODO",
+    payload: {
+      editId: id,
+      editData: data,
+    },
+  };
+};
+export const toggleEdit = (data) => {
+  console.log(data, "data");
+  return {
+    type: "TOGGLE_EDIT",
+    payload: data,
   };
 };

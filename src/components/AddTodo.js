@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../actions";
 import { v4 as uuidv4 } from "uuid";
-
 export const AddTodo = () => {
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value) {

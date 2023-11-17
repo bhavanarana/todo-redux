@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-
-export const EditTodoForm = ({ editTodo, task }) => {
-  const [value, setValue] = useState(task.task);
-
+import { useDispatch } from "react-redux";
+import { editTodo } from "../actions";
+export const EditTodoForm = ({ todo }) => {
+  const [value, setValue] = useState(todo.data);
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    editTodo(value, task.id);
+    dispatch(editTodo(todo.id, value));
   };
   return (
     <form onSubmit={handleSubmit} className="TodoForm">

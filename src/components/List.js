@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleComplete, deleteTodo } from "../actions";
-
+import { useDispatch } from "react-redux";
+import { toggleComplete, deleteTodo, toggleEdit } from "../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 export const List = ({ todo }) => {
   const dispatch = useDispatch();
-
   return (
     <div className="Todo">
       <p
@@ -20,11 +18,11 @@ export const List = ({ todo }) => {
         {todo.data}
       </p>
       <div>
-        {/* <FontAwesomeIcon
+        <FontAwesomeIcon
           className="edit-icon"
           icon={faPenToSquare}
-          onClick={() => editTodo(key)}
-        /> */}
+          onClick={() => dispatch(toggleEdit(todo.id))}
+        />
         <FontAwesomeIcon
           className="delete-icon"
           icon={faTrash}

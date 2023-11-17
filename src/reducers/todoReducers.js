@@ -31,7 +31,28 @@ const todoReducers = (state = initialData, action) => {
         ...state,
         list: filteredTodos,
       };
+    case "EDIT_TODO":
+      const { editId, editData } = action.payload;
+      const editedText = state.list.map((todo) =>
+        todo.id === editId
+          ? { ...todo, data: editData, isEditing: !todo.isEditing }
+          : todo
+      );
+      return {
+        ...state,
+        list: editedText,
+      };
 
+    case "TOGGLE_EDIT":
+      const editedId = action.payload;
+      const editToggle = state.list.map((todo) =>
+        todo.id === editedId ? { ...todo, isEditing: !todo.isEditing } : todo
+      );
+      console.log(editToggle);
+      return {
+        ...state,
+        list: editToggle,
+      };
     default:
       return state;
   }
