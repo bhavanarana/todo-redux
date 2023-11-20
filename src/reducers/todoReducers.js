@@ -6,8 +6,9 @@ const initialData = {
 const todoReducers = (state = initialData, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      const { id, data } = action.payload;
-
+      console.log(action.payload);
+      const id = action.payload[0];
+      const data = action.payload[1];
       return {
         ...state,
         list: [
@@ -32,7 +33,8 @@ const todoReducers = (state = initialData, action) => {
         list: filteredTodos,
       };
     case "EDIT_TODO":
-      const { editId, editData } = action.payload;
+      const editId = action.payload[0];
+      const editData = action.payload[1];
       const editedText = state.list.map((todo) =>
         todo.id === editId
           ? { ...todo, data: editData, isEditing: !todo.isEditing }
@@ -58,3 +60,4 @@ const todoReducers = (state = initialData, action) => {
   }
 };
 export default todoReducers;
+//

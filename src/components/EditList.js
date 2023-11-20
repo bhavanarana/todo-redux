@@ -6,7 +6,7 @@ export const EditTodoForm = ({ todo }) => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editTodo(todo.id, value));
+    dispatch(editTodo([todo.id, value]));
   };
   return (
     <form onSubmit={handleSubmit} className="TodoForm">

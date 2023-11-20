@@ -8,7 +8,7 @@ export const AddTodo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value) {
-      dispatch(addTodo(uuidv4(), value));
+      dispatch(addTodo([uuidv4(), value]));
       setValue("");
     }
   };
